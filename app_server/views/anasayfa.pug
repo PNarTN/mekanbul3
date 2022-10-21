@@ -1,64 +1,26 @@
 extends layout
+include fonksiyonlar/yildiz
 block content
   #banner.page-header 
     .row 
       .col-lg-6   
         h1 
-          | MekanBul 
-          small &nbsp; Civardaki Mekanları Keşfet!
+          | #{sayfaBaslik.siteAd} 
+          small &nbsp; #{sayfaBaslik.slogan}
   .row 
+    each mekan in mekanlar
       .row.list-group 
       .col-xs-12.col-sm-12  
         .col-xs-12.list-group-item
           h4 
-            a(href='/mekan') Starbucks
+            a(href='/mekan')=mekan.ad
             small &nbsp;
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star 
-            span.glyphicon.glyphicon-star-empty 
-            span.glyphicon.glyphicon-star-empty 
-            span.glyphicon.glyphicon-star-empty 
-          span.badge.pull-right.badge-default 7km  
-          p.address Centrum Garden AVM
+            +puanOlustur(mekan.puan)
+          span.badge.pull-right.badge-default #{mekan.mesafe}
+          p.address= mekan.adres
           p 
-            span.label.label-warning Kurabiye
-            | &nbsp;
-            span.label.label-warning Kahve
-            | &nbsp;
-      .row.list-group 
-      .col-xs-12.col-sm-12 
-        .col-xs-12.list-group-item
-          h4 
-            a(href='/mekan') Taş Kafe 
-            small &nbsp;
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star-empty 
-          span.badge.pull-right.badge-default 1km  
-          p.address SDÜ Batı Kampüsü
-          p 
-            span.label.label-warning Kahvaltı
-            | &nbsp;
-            span.label.label-warning Çorba
-            | &nbsp;
-      .row.list-group 
-      .col-xs-12.col-sm-12 
-        .col-xs-12.list-group-item
-          h4 
-            a(href='/mekan') Cam Kafe
-            small &nbsp;
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star-empty 
-            span.glyphicon.glyphicon-star-empty 
-          span.badge.pull-right.badge-default 500m  
-          p.address SDÜ Batı Kampüsü
-          p 
-            span.label.label-warning Çay
-            | &nbsp;
-            span.label.label-warning Kahve
-            | &nbsp;
-
+            each imkan in mekan.imkanlar
+              span.label.label-warning= imkan
+              | &nbsp;
+           
+      
