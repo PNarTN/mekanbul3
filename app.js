@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 
+require('./app_server/models/db'); 
 var app = express();
 
 // view engine setup
@@ -27,6 +28,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -39,3 +41,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
