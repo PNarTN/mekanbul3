@@ -1,5 +1,5 @@
 var mongoose = require( 'mongoose' );
-var dbURI ="mongodb://localhost/mekanbul" 
+var dbURI ="mongodb+srv://pinar:qwas12@mekanbul.bdrevwg.mongodb.net/mekanbul?retryWrites=true&w=majority"
 //'mongodb+srv://pinar:qwas12@mekanbul.bdrevwg.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(dbURI, {useNewUrlParser: true}); 
 mongoose.connect(dbURI);
