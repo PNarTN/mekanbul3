@@ -1,29 +1,28 @@
-var mongoose = require( 'mongoose' );
-var dbURI ="mongodb+srv://pinar:qwas12@mekanbul.bdrevwg.mongodb.net/mekanbul?retryWrites=true&w=majority"
-//'mongodb+srv://pinar:qwas12@mekanbul.bdrevwg.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(dbURI, {useNewUrlParser: true}); 
-mongoose.connect(dbURI);
-mongoose.connection.on("connected",function(){
-    console.log(dbURI+" adresindeki veritabanına bağlanıldı!\n");
-});
-mongoose.connection.on("error",function(){
-    console.log(dbURI+"Bağlantı hatası!\n");
-});
-mongoose.connection.on("disconnected",function(){
-    console.log(dbURI+"Bağlantı kesildi!\n");
-});
+var mongoose = require( 'mongoose' ); 
+require("./mekansema");
+var dbURI = "mongodb+srv://mekan32:qwas12@mekanbul.o4n23jw.mongodb.net/mekanbul?retryWrites=true&w=majority" 
+//var dbURI = "mongodb://localhost/mekanbul"
 
+mongoose.connect(dbURI); 
 function kapat(msg,callback){
     mongoose.connection.close(function(){
-        console.log(msg);
-        callback;
-    });
+    console.log(msg);
+    callback();
+});
 }
 
-process.on("SIGNINT", function(){
+process.on("SIGINT",function(){
     kapat("Uygulama kapatıldı!",function(){
         process.exit(0);
     });
 });
 
-require("./mekansema"); 
+mongoose.connection.on("connected",function(){
+    console.log(dbURI + "   adresteki veri tabanına bağlandı!\n");
+});
+mongoose.connection.on("error",function(){
+    console.log("Bağlantı hatası\n");
+});
+mongoose.connection.on("disconnected",function(){
+    console.log("Bağlantı kesildi!\n");
+});
