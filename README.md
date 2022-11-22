@@ -7,4 +7,4 @@
 ![2](/photos/mekanlar.png)
 
 ## [3. Bir Mekana Ait Belirli Bir Yorumu Getir](https://mekanbul5.pnarr.repl.co/api/mekanlar/63794001e9cfef2efb8c5d60/yorumlar/63794004cf6e6978de6b3060)
-![3](/photos/yorumlar.png)
+![3](/photos/yorumlar.png) 
