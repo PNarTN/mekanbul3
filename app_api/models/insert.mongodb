@@ -2,11 +2,10 @@ const database = 'mekanbul';
 use(database);
 db.mekanlar.insertOne(
 {
-  "ad": "Starbucks",
+  "ad": "Kahve Dünyası",
   "adres": "Centrum Garden",
-  "puan": 5,
+  "puan": 4,
   "imkanlar": [
-    "çay",
     "kahve",
     "pasta"
   ],
